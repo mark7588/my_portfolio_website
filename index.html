@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaeJoon Kim | Data & Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--accent-color); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #ece9e6, #ffffff);
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 2rem;
+            min-height: 1.6em; /* Prevents layout shift */
+        }
+
+        .typewriter-text {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .social-icons a {
+            font-size: 1.8rem;
+            margin: 0 10px;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* --- GENERAL SECTIONS --- */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: left;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 10px 0 0;
+        }
+
+        /* --- EXPERIENCE & EDUCATION CARDS --- */
+        .card-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .card-title h3 { font-size: 1.4rem; color: var(--primary-color); }
+        .card-title h4 { font-size: 1rem; color: #666; font-weight: normal; }
+        .date { font-size: 0.9rem; color: #888; font-style: italic; }
+
+        .card ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .card li { margin-bottom: 0.5rem; color: #555; }
+
+        /* --- SKILLS --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #e1f5fe;
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Simplified for demo, ideally a burger menu */
+            .card-header { flex-direction: column; }
+            section { padding: 3rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">TJ Kim</div>
+        <div class="nav-links">
+            <a href="#who-am-i">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="about">
+        <h1>TaeJoon Kim</h1>
+        <p>I am a <span class="typewriter-text"></span></p>
+        <div class="social-icons">
+            <a href="https://github.com/mark7588" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/tjkim0119" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:taejoonkim0119@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
+
+    <section id="who-am-i">
+        <h2 class="section-title">Who Am I</h2>
+        <div class="card">
+            <p style="line-height: 1.8;">
+                With three years of experience as a Data Engineer at leading financial institutions - Wells Fargo and Regions Bank, I've specialized in maintaining and modernizing ETL pipelines. My current work involves architecting and building robust ETL solutions for machine learning models using Python, Spark, and Snowflake.
+                <br><br>
+                My journey in tech began in Seoul, South Korea, where my fascination was initiated by the Apple iPhone 3GS. At a time when its import was restricted, my curiosity led me to acquire one, sparking a deep-seated passion for software and its power to connect the world. This early experience set me on the path to computer science and eventually brought me to Charlotte, North Carolina. My focus on artificial intelligence, which began during my undergraduate studies in 2022, has since become the central pillar of my career. To deepen my expertise, I am currently pursuing a Master of Science in Computer Science at The University of Texas at Austin.
+                <br><br>
+                Driven by a relentless curiosity to explore diverse fields, I am always seeking new interests and challenges. I am now eager to apply my blend of data engineering experience and advanced AI/ML knowledge to a challenging AI/ML Engineer role, particularly within the dynamic tech, music, food & beverage, or aerospace industries.
+                <br><br>
+                Outside of technology, I'm an avid cook, a restaurant review blogger, and I enjoy the spontaneity of improv. You might also find me singing K-pop songs. These creative outlets enhance my problem-solving skills and bring a fresh perspective to my work.
+            </p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>Software Engineer</h3>
+                        <h4>Wells Fargo | Charlotte, NC</h4>
+                    </div>
+                    <span class="date">July 2022 – Present</span>
+                </div>
+                <ul>
+                    <li>Spearheaded the migration of internal risk data aggregation application (3000+ users) from Azure Kubernetes Service to OpenShift, resulting in 20% operational cost reduction. </li>
+                    <li>Drove Agile SDLC initiatives from sprint planning to production deployment using Jira, Confluence, and Github Actions. </li>
+                    <li>Managed and monitored 100+ production ETL jobs using SSIS and AutoSys, guaranteeing 99% data availability. </li>
+                    <li>Ensured 100% data accuracy for millions of financial risk data records through rigorous DML execution. </li>
+                    <li>Updated C# scripts for timestamp logic and Stored Procs in MS SQL Server for alphanumeric data formatting. </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Key Projects</h2>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>AKS to OCP Migration</h3>
+                        <h4>Wells Fargo</h4>
+                    </div>
+                </div>
+                <ul>
+                    <li>Migrated UI (Angular) and API (Spring) components to OpenShift Container Platform using Harness and GitHub. </li>
+                    <li>Implemented non-functional requirements including searchable alerts, error handling, and user activity logging using Java, AppDynamics, and Splunk. </li>
+                    <li><strong>Tech:</strong> Java, Harness, Jenkins, Docker, Kubernetes, Splunk. </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>DBMS for Wholesale Company</h3>
+                        <h4>NCSU</h4>
+                    </div>
+                </div>
+                <ul>
+                    <li>Developed a relational DBMS to manage inventory, client info, transactions, and employee records. </li>
+                    <li>Built a Java GUI to encapsulate SQL execution, providing role-based views for admins and customers. </li>
+                    <li><strong>Tech:</strong> Java, MariaDB, JDBC. </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="card skill-category">
+                <h3>Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">R</span>
+                </div>
+            </div>
+            <div class="card skill-category">
+                <h3>DevOps & Cloud</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Jenkins</span>
+                    <span class="skill-tag">OpenShift</span>
+                    <span class="skill-tag">Harness</span>
+                    <span class="skill-tag">GitHub Actions</span>
+                </div>
+            </div>
+            <div class="card skill-category">
+                <h3>Data & Frameworks</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Spring</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Angular</span>
+                    <span class="skill-tag">SSIS</span>
+                    <span class="skill-tag">MS SQL Server</span>
+                    <span class="skill-tag">Teradata</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>University of Texas @ Austin</h3>
+                        <h4>M.S. in Computer Science</h4>
+                    </div>
+                    <span class="date">Exp. Aug 2027</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>North Carolina State University</h3>
+                        <h4>B.S. in Computer Science</h4>
+                    </div>
+                    <span class="date">May 2022</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 TaeJoon Kim. Built for GitHub Pages.</p>
+    </footer>
+
+    <script>
+        // 1. Typewriter Effect
+        const textElement = document.querySelector('.typewriter-text');
+        const phrases = ["Software Engineer", "Data Engineer", "AI Engineer", "Creative Problem Solver"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 200;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end of word
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+
+        // 2. Smooth Scroll for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
